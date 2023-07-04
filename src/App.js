@@ -38,7 +38,7 @@ function App() {
         />
         <h3>Results</h3>
         <div id="results">
-          <div>
+          <div className="user-border">
             {results.map((user) => (
               <User
                 key={user.login}
@@ -58,6 +58,7 @@ function User({ avatar, url, username }) {
   return (
     <div className="user">
       <img src={avatar} alt="Profile" width="50" height="50" />
+      <br/>
       <a href={url} target="_blank" rel="noopener noreferrer">
         {username}
       </a>

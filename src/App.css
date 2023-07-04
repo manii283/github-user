@@ -3,6 +3,12 @@
   font-family: Arial, sans-serif;
 }
 
+.user-border{
+  border: 1px solid black;
+  text-align: center;
+  padding: 20px;
+}
+
 .app {
   margin: 0;
   padding: 10px;
