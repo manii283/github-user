@@ -1,5 +1,17 @@
-import "./App.css";
 import React, { useState } from "react";
+import "./App.css";
+
+const API_URL = "https://api.github.com";
+
+async function fetchResults(query) {
+  try {
+    const response = await fetch(`${API_URL}/search/users?q=${query}`);
+    const json = await response.json();
+    return json.items || [];
+  } catch (e) {
+    throw new Error(e);
+  }
+}
 
 function App() {
   const [query, setQuery] = useState("");
@@ -20,9 +32,9 @@ function App() {
       <main className="main">
         <h2>GitHub User Search</h2>
         <Form
-          value={query}
           onChange={onSearchChange}
           onSubmit={onSearchSubmit}
+          value={query}
         />
         <h3>Results</h3>
         <div id="results">
