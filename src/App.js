@@ -3,9 +3,16 @@ import React, { useState } from "react";
 
 function App() {
   const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
 
   function onSearchChange(event) {
     setQuery(event.target.value);
+  }
+
+  async function onSearchSubmit(event) {
+    event.preventDefault();
+    const results = await fetchResults(query);
+    setResults(results);
   }
 
   return (
@@ -15,6 +22,7 @@ function App() {
         <Form
           value={query}
           onChange={onSearchChange}
+          onSubmit={onSearchSubmit}
         />
         <h3>Results</h3>
         <div id="results">
